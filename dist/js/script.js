@@ -40,40 +40,67 @@ const html = document.querySelector("html");
 darkToggle.addEventListener("click", () => {
   if (darkToggle.checked) {
     html.classList.add("dark");
-    localStorage.theme = 'dark'
+    localStorage.theme = "dark";
   } else {
     html.classList.remove("dark");
-    localStorage.theme = 'light'
+    localStorage.theme = "light";
   }
 });
 
+
 // pindahkan posisi toggle sesuai mode
-if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-    document.documentElement.classList.add('dark')
-    darkToggle.checked = true
-  } else {
-    darkToggle.checked = false
-  }
+if (
+  localStorage.theme === "dark" ||
+  (!("theme" in localStorage) &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches)
+) {
+  document.documentElement.classList.add("dark");
+  darkToggle.checked = true;
+} else {
+  darkToggle.checked = false;
+}
+
 
 //   contact API
-
 function sendMail() {
   var params = {
-      from_name: document.getElementById('name').value,
-      email_id: document.getElementById('email').value,
-      message: document.getElementById('message').value
+    from_name: document.getElementById("name").value,
+    email_id: document.getElementById("email").value,
+    message: document.getElementById("message").value,
   };
 
   const serviceID = "service_ilbboqk";
   const templateID = "template_df8mour";
 
-  emailjs.send(serviceID, templateID, params)
-      .then((res) => {
-          document.getElementById("name").value = "";
-          document.getElementById("email").value = "";
-          document.getElementById("message").value = "";
-          console.log(res);
-          alert("Your Message sent successfully");
-      })
-      .catch((err) => console.log(err));
+  emailjs
+    .send(serviceID, templateID, params)
+    .then((res) => {
+      document.getElementById("name").value = "";
+      document.getElementById("email").value = "";
+      document.getElementById("message").value = "";
+      console.log(res);
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Your Message Has Been Sucessfully Sent",
+        color: "#14b8a6",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    })
+    .catch((err) => console.log(err));
 }
+
+
+// TRANSITION ANIMATION SKILLS IMAGE
+const skillsImg = document.querySelectorAll('#techs-img')
+
+skillsImg.forEach((img, i) => {
+  img.dataset.aos = 'fade-down';
+  img.dataset.aosDelay = i * 100;
+  img.dataset.aosDuration = 1000;
+})
+
+// ANIMASI GSAP
+gsap.registerPlugin(TextPlugin);
+gsap.to('.lead', {duration: 2, delay: 3, text: 'College Student | Web Developer'})
