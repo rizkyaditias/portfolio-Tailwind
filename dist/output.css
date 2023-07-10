@@ -1303,9 +1303,19 @@ body{
 }
 
 @media (min-width: 640px) {
+  .sm\:max-w-full {
+    max-width: 100%;
+  }
+
   .sm\:text-4xl {
     font-size: 2.25rem;
     line-height: 2.5rem;
+  }
+
+  @media not all and (min-width: 1024px) {
+    .sm\:max-lg\:block {
+      display: block;
+    }
   }
 }
 
@@ -1322,6 +1332,14 @@ body{
     width: 33.333333%;
   }
 
+  .md\:w-full {
+    width: 100%;
+  }
+
+  .md\:max-w-full {
+    max-width: 100%;
+  }
+
   .md\:scale-100 {
     --tw-scale-x: 1;
     --tw-scale-y: 1;
@@ -1336,6 +1354,14 @@ body{
   .md\:text-xl {
     font-size: 1.25rem;
     line-height: 1.75rem;
+  }
+}
+
+@media (min-width: 640px) {
+  @media (min-width: 1024px) {
+    .sm\:lg\:block {
+      display: block;
+    }
   }
 }
 

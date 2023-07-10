@@ -47,7 +47,6 @@ darkToggle.addEventListener("click", () => {
   }
 });
 
-
 // pindahkan posisi toggle sesuai mode
 if (
   localStorage.theme === "dark" ||
@@ -60,47 +59,63 @@ if (
   darkToggle.checked = false;
 }
 
-
 //   contact API
 function sendMail() {
-  var params = {
-    from_name: document.getElementById("name").value,
-    email_id: document.getElementById("email").value,
-    message: document.getElementById("message").value,
-  };
+  let name = document.getElementById("name").value;
+  let email = document.getElementById("email").value;
+  let message = document.getElementById("message").value;
 
-  const serviceID = "service_ilbboqk";
-  const templateID = "template_df8mour";
+  if (name === "" || email === "" || message === "") {
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      color: "red",
+      text: "Please Fill In All Fields",
+    });
+  } else {
+    var params = {
+      from_name: name,
+      email_id: email,
+      message: message,
+    };
 
-  emailjs
-    .send(serviceID, templateID, params)
-    .then((res) => {
-      document.getElementById("name").value = "";
-      document.getElementById("email").value = "";
-      document.getElementById("message").value = "";
-      console.log(res);
-      Swal.fire({
-        position: "center",
-        icon: "success",
-        title: "Your Message Has Been Sucessfully Sent",
-        color: "#14b8a6",
-        showConfirmButton: false,
-        timer: 1500,
-      });
-    })
-    .catch((err) => console.log(err));
+    const serviceID = "service_ilbboqk";
+    const templateID = "template_df8mour";
+
+    emailjs
+      .send(serviceID, templateID, params)
+      .then((res) => {
+        document.getElementById("name").value = "";
+        document.getElementById("email").value = "";
+        document.getElementById("message").value = "";
+        console.log(res);
+
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Your Message Has Been Successfully Sent",
+          color: "#14b8a6",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      })
+      .catch((err) => console.log(err));
+  }
 }
 
-
 // TRANSITION ANIMATION SKILLS IMAGE
-const skillsImg = document.querySelectorAll('#techs-img')
+const skillsImg = document.querySelectorAll("#techs-img");
 
 skillsImg.forEach((img, i) => {
-  img.dataset.aos = 'fade-down';
+  img.dataset.aos = "fade-down";
   img.dataset.aosDelay = i * 100;
   img.dataset.aosDuration = 1000;
-})
+});
 
 // ANIMASI GSAP
 gsap.registerPlugin(TextPlugin);
-gsap.to('.lead', {duration: 2, delay: 3, text: 'College Student | Web Developer'})
+gsap.to(".lead", {
+  duration: 2,
+  delay: 3,
+  text: "College Student | Web Developer",
+});
