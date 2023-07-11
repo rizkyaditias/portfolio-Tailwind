@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth relative">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Portfolio</title>
+    <link rel="icon" href="dist/rizky3.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
     <link href="dist/output.css" rel="stylesheet" />
 
     <!-- LIBRARY AOS -->
@@ -62,14 +64,14 @@
                 </li>
                 <li class="mt-3 lg:mt-0 flex items-center pl-8">
                   <div class="flex">
-                    <span class="mr-2 text-sm text-slate-500">light</span>
+                    <span class="mr-2 text-sm text-white " id="lightMode"><i class="fa-solid fa-sun"></i></span>
                     <input type="checkbox" class="hidden" id="dark-toggle">
                     <label for="dark-toggle">
-                      <div class="flex h-5 w-9 cursor-pointer items-center rounded-full bg-slate-500 p-1">
+                      <div class="flex h-5 w-9 cursor-pointer items-center rounded-full bg-slate-500 p-1 mr-2">
                         <div class="toggle-circle h-4 w-4 rounded-full bg-white transition duration-300 ease-in-out"></div>
                       </div>
                     </label>
-                    <span class="mr-2 text-sm text-slate-500">dark</span>
+                    <span class="mr-2text-sm dark:hidden"><i class="fa-solid fa-moon"></i></span>
                   </div>
                 </li>
               </ul>
@@ -452,13 +454,15 @@
     </a>
     <!-- Back To TOP End -->
 
+    
+
     <!-- CDN SCRIPT ANIMATION GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/TextPlugin.min.js"></script>
 
     <!-- Script TO file script.js -->
     <script src="dist/js/script.js"></script>
-    
+
     <!-- LIBRARY AOS -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>

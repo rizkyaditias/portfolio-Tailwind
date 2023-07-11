@@ -47,17 +47,22 @@ darkToggle.addEventListener("click", () => {
   }
 });
 
+const light = document.querySelector('#lightMode')
+console.log(light)
 // pindahkan posisi toggle sesuai mode
-if (
-  localStorage.theme === "dark" ||
-  (!("theme" in localStorage) &&
-    window.matchMedia("(prefers-color-scheme: dark)").matches)
+if (localStorage.theme === "dark" || (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)
 ) {
-  document.documentElement.classList.add("dark");
   darkToggle.checked = true;
 } else {
   darkToggle.checked = false;
 }
+
+// Delete icon jika light 
+// if(localStorage.theme === "light") {
+//   light.style.opacity = 0
+// } else {
+//   light.style.display = 'block'
+// }
 
 //   contact API
 function sendMail() {
