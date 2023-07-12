@@ -47,22 +47,16 @@ darkToggle.addEventListener("click", () => {
   }
 });
 
-const light = document.querySelector('#lightMode')
-console.log(light)
 // pindahkan posisi toggle sesuai mode
-if (localStorage.theme === "dark" || (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)
+if (
+  localStorage.theme === "dark" ||
+  (!("theme" in localStorage) &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches)
 ) {
   darkToggle.checked = true;
 } else {
   darkToggle.checked = false;
 }
-
-// Delete icon jika light 
-// if(localStorage.theme === "light") {
-//   light.style.opacity = 0
-// } else {
-//   light.style.display = 'block'
-// }
 
 //   contact API
 function sendMail() {
@@ -70,7 +64,7 @@ function sendMail() {
   let email = document.getElementById("email").value;
   let message = document.getElementById("message").value;
 
-  if (name === "" || email === "" || message === "") {
+  if (isTrue(name, email, message, email)) {
     Swal.fire({
       icon: "error",
       title: "Oops...",
@@ -107,7 +101,10 @@ function sendMail() {
       .catch((err) => console.log(err));
   }
 }
-
+// CONDITION FOR CONTACT FORM
+function isTrue(...args) {
+  return args.some((arg) => arg === "" || !args[args.length - 1].includes("@"));
+}
 // TRANSITION ANIMATION SKILLS IMAGE
 const skillsImg = document.querySelectorAll("#techs-img");
 
