@@ -78,7 +78,7 @@ function sendMail() {
       message: message,
     };
 
-    const serviceID = "service_ilbboqk";
+    const serviceID = "service_ovvdtor";
     const templateID = "template_df8mour";
 
     emailjs
